@@ -1,23 +1,13 @@
-# Robust Node.js Boilerplate
+# TypeORM With ESM
 
-A robust Node.js boilerplate with TypeScript and ESM support, designed to kickstart your Node.js projects with best practices and essential tools.
+This is simple project which checks how TypeORM works in the Node.js 22 project with ESM modules.
 
-## Features
+Project assumptions:
 
-- ✅ TypeScript configuration
-- ✅ ESLint for code linting
-- ✅ Prettier for code formatting
-- ✅ Node.js built-in test runner for unit testing
-- ✅ Node.js v22+ support
-- ✅ Docker setup
-  - ✅ Development Dockerfile
-  - ✅ docker-compose.yml for local development
-  - [ ] Production-ready Dockerfile
-- [ ] [Taskfile](https://taskfile.dev/) for running scripts
-- [ ] GitHub Actions for CI/CD
-  - [ ] Run linters
-  - [ ] Run tests
-  - [ ] Build and push Docker image
+- check the most common relations types between entities (one-to-one, one-to-many and many-to-many),
+- don't bind to any specific framework at this test setup,
+- use Docker and docker compose to setup the project,
+- write integration tests which will quickly check if the required funcitonalities work (or not).
 
 ## Getting Started
 
@@ -29,14 +19,14 @@ A robust Node.js boilerplate with TypeScript and ESM support, designed to kickst
 
 ### Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
-git clone https://github.com/IgorWnek/nodejs-robust-boilerplate.git
-cd nodejs-robust-boilerplate
+git clone https://github.com/IgorWnek/typeorm-with-esm.git
+cd typeorm-with-esm
 ```
 
-2. Install dependencies:
+Install dependencies:
 
 ```bash
 pnpm install
@@ -50,39 +40,19 @@ pnpm install
 - Run the application in watch mode: `pnpm run dev:watch`
 - Run the application in debug mode: `pnpm run dev:debug`
 
+- Run tests: `pnpm test`
+- Lint code: `pnpm run lint`
+- Format code: `pnpm run format`
+
 #### Using Docker
 
-1. Build and start the Docker container:
+Build and start the Docker container:
 
 ```bash
 docker-compose up --build
 ```
 
-2. The application will be available at `http://localhost:3000`
-
-### Scripts
-
-- Run tests: `pnpm test`
-- Lint code: `pnpm run lint`
-- Format code: `pnpm run format`
-
-## Project Structure
-
-```text
-nodejs-robust-boilerplate/
-├── src/
-│   ├─ index.ts
-│   └── hello-world.ts
-├── test/
-│   └── hello-world.test.ts
-├── .eslintrc.json
-├── .gitignore
-├── .prettierrc.json
-├── package.json
-├── tsconfig.json
-├── README.md
-└── LICENSE
-```
+The application will be available at `http://localhost:3000`
 
 ## Configuration
 
