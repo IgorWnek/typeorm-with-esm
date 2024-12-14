@@ -14,7 +14,7 @@ Project assumptions:
 ### Prerequisites
 
 - Node.js (v22.0.0 or higher)
-- pnpm (v9.7.0 or higher recommended)
+- pnpm (v9.15.0 or higher)
 - Docker and Docker Compose (for containerized development)
 
 ### Installation
@@ -39,10 +39,11 @@ pnpm install
 - Run the application: `pnpm run dev`
 - Run the application in watch mode: `pnpm run dev:watch`
 - Run the application in debug mode: `pnpm run dev:debug`
-
 - Run tests: `pnpm test`
 - Lint code: `pnpm run lint`
 - Format code: `pnpm run format`
+
+Note: The application uses the `--env-file=.env` flag for environment variables configuration.
 
 #### Using Docker
 
@@ -74,7 +75,9 @@ TypeScript is configured in the `tsconfig.json` file. Key settings include:
     "rootDir": "./src",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "lib": ["ES2022"]
+    "lib": ["ES2022"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "test", "**/*.test.ts"]
@@ -91,6 +94,7 @@ This configuration:
 - Specifies `./src` as the root directory for source files
 - Includes all files in the `src` directory
 - Excludes `node_modules`, `dist`, `test`, and test files from compilation
+- Enables experimental decorators and emits decorator metadata
 
 These settings ensure a modern, strict TypeScript setup optimized for Node.js development with ESM support.
 
