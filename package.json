@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "This is an app showing how to use TypeORM with ESM and Node.js",
   "type": "module",
+  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "tsx src/app.ts",
-    "dev:watch": "tsx watch src/app.ts",
-    "dev:debug": "tsx debug src/app.ts",
+    "dev": "node --env-file=.env --import tsx src/app.ts",
+    "dev:watch": "node --watch --env-file=.env --import tsx src/app.ts",
+    "dev:debug": "node --inspect --env-file=.env --import tsx src/app.ts",
     "test": "tsx --test test/**/*.test.ts",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
@@ -34,7 +35,8 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "typeorm": "^0.3.20",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
   }
 }
