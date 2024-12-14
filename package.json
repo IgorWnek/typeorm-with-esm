@@ -1,15 +1,15 @@
 {
-  "name": "nodejs-robust-boilerplate",
+  "name": "typeorm-with-esm",
   "version": "1.0.0",
-  "description": "Robust Node.js Boilerplate with TypeScript and ESM",
+  "description": "This is an app showing how to use TypeORM with ESM and Node.js",
   "type": "module",
   "engines": {
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "dev:watch": "tsx watch src/index.ts",
-    "dev:debug": "tsx debug src/index.ts",
+    "dev": "tsx src/app.ts",
+    "dev:watch": "tsx watch src/app.ts",
+    "dev:debug": "tsx debug src/app.ts",
     "test": "tsx --test test/**/*.test.ts",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
