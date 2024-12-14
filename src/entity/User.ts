@@ -4,10 +4,10 @@ import { Office } from './Office.js';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   name: string;
 
   @ManyToOne(() => Company, (company) => company.users)
@@ -15,4 +15,11 @@ export class User {
 
   @ManyToMany(() => Office, (office) => office.users)
   offices: Office[];
+
+  constructor({ name, company, id, offices = [] }: { name: string; company: Company; id?: string, offices?: Office[] }) {
+    this.name = name;
+    this.company = company;
+    this.offices = offices;
+    this.id = id;
+  }
 }

@@ -1,5 +1,7 @@
 import { DataSource } from 'typeorm';
 import { User } from '../entity/User.js';
+import { Company } from '../entity/Company.js';
+import { Office } from '../entity/Office.js';
 
 export class UserRepository {
   private repository;
@@ -8,5 +10,8 @@ export class UserRepository {
     this.repository = dataSource.getRepository(User);
   }
 
-  // ...custom methods using this.repository...
+  async createMany(userData: { name: string, company: Company, offices: Office[] }[]): Promise<User[]> {
+    const entities = userData.map(data => this.repository.create(data));
+    return await this.repository.save(entities);
+  }
 }

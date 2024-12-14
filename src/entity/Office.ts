@@ -3,18 +3,18 @@ import { User } from './User.js';
 
 @Entity()
 export class Office {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   location: string;
 
   @ManyToMany(() => User, (user) => user.offices)
-  users: User[];
+  users?: User[];
 
-  constructor({ location, id, users }: { location: string; id?: number; users?: User[] }) {
+  constructor({ location, id, users = [] }: { location: string; id?: string; users?: User[] }) {
     this.location = location;
-    if (id) this.id = id;
-    if (users) this.users = users;
+    this.id = id;
+    this.users = users;
   }
 }

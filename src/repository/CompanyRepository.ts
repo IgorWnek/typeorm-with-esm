@@ -8,5 +8,8 @@ export class CompanyRepository {
     this.repository = dataSource.getRepository(Company);
   }
 
-  // ...custom methods using this.repository...
+  async createMany(companies: { name: string }[]): Promise<Company[]> {
+    const entities = companies.map(c => this.repository.create(c));
+    return await this.repository.save(entities);
+  }
 }

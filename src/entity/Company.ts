@@ -3,12 +3,18 @@ import { User } from './User.js';
 
 @Entity()
 export class Company {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   name: string;
 
   @OneToMany(() => User, (user) => user.company)
-  users: User[];
+  users?: User[];
+
+  constructor({ name, id, users = [] }: { name: string; id?: string; users?: User[] }) {
+    this.name = name;
+    this.id = id;
+    this.users = users;
+  }
 }

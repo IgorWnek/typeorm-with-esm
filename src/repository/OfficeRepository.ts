@@ -8,5 +8,8 @@ export class OfficeRepository {
     this.repository = dataSource.getRepository(Office);
   }
 
-  // ...custom methods using this.repository...
+  async createMany(offices: { location: string }[]): Promise<Office[]> {
+    const entities = offices.map(o => this.repository.create(o));
+    return await this.repository.save(entities);
+  }
 }
